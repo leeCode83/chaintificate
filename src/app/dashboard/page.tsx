@@ -1,7 +1,7 @@
 // app/dashboard/page.tsx
 import React from "react";
 import Link from "next/link";
-import DashboardHeader from "../components/Header"; // Sesuaikan path sesuai lokasi file Anda
+import Header from "../components/Header";
 import { GraduationCap, Landmark } from "lucide-react";
 
 // Komponen Kartu Pilihan Peran
@@ -29,10 +29,10 @@ const RoleCard: React.FC<{
 export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-white font-sans">
-      {/* 1. Header Biru */}
-      <DashboardHeader />
+      {/* Header Biru Solid */}
+      <Header />
 
-      {/* 2. Role Selection Content */}
+      {/* Content: Role Selection */}
       <div className="flex flex-col items-center justify-start pt-28 min-h-[calc(100vh-69px)] bg-white">
         <h1 className="text-[32px] font-bold mb-3 text-gray-900">
           Choose Your Role
@@ -46,13 +46,13 @@ export default function DashboardPage() {
             Icon={GraduationCap}
             title="Student"
             description="View and manage your certificates and degrees"
-            href="/login/student"
+            href="/login/student" // Mengarah ke halaman Login Student
           />
           <RoleCard
             Icon={Landmark}
             title="Institute"
             description="Create and manage certificates for students"
-            href="/login/institute"
+            href="/login/institute" // Mengarah ke halaman Register Institute
           />
         </div>
       </div>

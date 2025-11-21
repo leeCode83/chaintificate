@@ -1,9 +1,7 @@
 // app/login/student/page.tsx
 import React from "react";
 import Link from "next/link";
-import Header from "../../components/Header"; // Pastikan path impor Header sudah benar
-
-// Ganti dengan path gambar Anda di folder public, misalnya: '/images/students.jpg'
+import Header from "../../components/Header"; 
 const BACKGROUND_IMAGE_URL = "login.png";
 
 export default function StudentLoginPage() {

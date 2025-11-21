@@ -1,33 +1,22 @@
-// components/Header.tsx (HEADER UTAMA UNTUK SEMUA HALAMAN)
+// components/Header.tsx
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 const Header: React.FC = () => {
-  // Tentukan path logo Anda di folder public
-  const LOGO_SRC = "/logo.png"; // Path yang telah kita koreksi
-
-  // Warna Biru Header: #2979FF
-  // Warna Hijau Connect: #00CC44
+  const LOGO_SRC = "/logo.png"; // Your logo path
 
   return (
     <header className="flex justify-between items-center py-4 px-6 md:px-12 lg:px-24 bg-[#2979FF] shadow-lg">
-      {/* Logo Chaintificate */}
       <Link href="/" className="flex items-center space-x-2">
-        {/* Logo Gambar */}
         <Image
           src={LOGO_SRC}
           alt="Chaintificate Logo"
-          width={60}
-          height={60}
-          // Hapus background putih dan padding
-          className="rounded-md"
+          width={75}
+          height={75}
         />
-
-        <span className="text-white text-lg font-bold">Chaintificate</span>
       </Link>
 
-      {/* Menu Navigasi (Teks Putih) */}
       <nav className="hidden md:flex space-x-10 text-white text-[16px] font-medium">
         <Link
           href="/"
@@ -49,13 +38,16 @@ const Header: React.FC = () => {
         </Link>
       </nav>
 
-      {/* Tombol Connect Wallet (Hijau Terang) */}
-      <button className="flex items-center space-x-2 bg-[#00CC44] hover:bg-[#00B33A] text-white font-semibold text-sm py-2 px-4 rounded-full transition-colors duration-150 shadow-md">
+      {/* --- REVISED CONNECT WALLET BUTTON --- */}
+      <button className="flex items-center space-x-2 bg-[#0092FF] hover:bg-[#007ACF] text-white font-semibold text-base py-2 px-5 rounded-full transition-colors duration-150 shadow-md">
         <div className="relative flex items-center justify-center">
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+          {/* The vibrant green dot */}
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-[#00FF00]"></span>{" "}
+          {/* Increased size and vibrant green color */}
         </div>
         <span>Connect Wallet</span>
       </button>
+      {/* ------------------------------------ */}
     </header>
   );
 };

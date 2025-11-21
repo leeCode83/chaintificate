@@ -1,28 +1,100 @@
 // app/register/student/page.tsx
 import React from "react";
 import Link from "next/link";
-import Header from "../../components/Header"; // Sesuaikan path jika perlu
+import Header from "../../components/Header"; // Sesuaikan path impor Header
 
-const BACKGROUND_IMAGE_URL = "login.png";
+// Ganti dengan path gambar Anda di folder public, misalnya: '/images/students.jpg'
+const BACKGROUND_IMAGE_URL = "/login.png";
 
 export default function StudentRegisterPage() {
   return (
-    <div className="min-h-screen bg-white font-sans">
+    <div className="min-h-screen bg-white">
+      {/* Header Biru */}
       <Header />
-      <div className="flex flex-col items-center justify-center min-h-[calc(100vh-69px)]">
-        <h1 className="text-3xl font-bold text-gray-800">
-          Student Registration
-        </h1>
-        <p className="text-gray-600 mt-4">
-          Halaman ini masih dalam tahap pengembangan.
-        </p>
-        <div className="mt-8">
-          <Link
-            href="/login/student"
-            className="text-[#2979FF] hover:underline"
-          >
-            Kembali ke Login
-          </Link>
+
+      <div className="flex min-h-[calc(100vh-69px)]">
+        {/* Kolom Kiri: Background Image (50% lebar) */}
+        <div className="hidden lg:block w-1/2 relative">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${BACKGROUND_IMAGE_URL})` }}
+          />
+
+          {/* Gradient Lembut yang Menyatu dengan Sisi Kanan Putih */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/50 to-white"></div>
+        </div>
+
+        {/* Kolom Kanan: Formulir Registrasi (50% lebar) */}
+        <div className="w-full lg:w-1/2 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-20 bg-white">
+          <div className="w-full max-w-sm space-y-8">
+            <h2 className="text-3xl font-bold text-gray-900 text-center lg:text-left">
+              Register your account
+            </h2>
+
+            <form className="mt-8 space-y-6">
+              <div className="rounded-md -space-y-px">
+                {/* Username Input */}
+                <div>
+                  <input
+                    type="text"
+                    required
+                    className="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-[#2979FF] focus:border-[#2979FF] focus:z-10 sm:text-base"
+                    placeholder="Username"
+                  />
+                </div>
+
+                {/* Email Input */}
+                <div className="pt-4">
+                  <input
+                    type="email"
+                    required
+                    className="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-[#2979FF] focus:border-[#2979FF] focus:z-10 sm:text-base"
+                    placeholder="Email Address"
+                  />
+                </div>
+
+                {/* Password Input */}
+                <div className="pt-4">
+                  <input
+                    type="password"
+                    required
+                    className="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-[#2979FF] focus:border-[#2979FF] focus:z-10 sm:text-base"
+                    placeholder="Password"
+                  />
+                </div>
+
+                {/* Confirm Password Input */}
+                <div className="pt-4">
+                  <input
+                    type="password"
+                    required
+                    className="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-[#2979FF] focus:border-[#2979FF] focus:z-10 sm:text-base"
+                    placeholder="Confirm Password"
+                  />
+                </div>
+              </div>
+
+              {/* Tombol Register */}
+              <div className="pt-6">
+                <button
+                  type="submit"
+                  className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-base font-medium rounded-lg text-white bg-[#2979FF] hover:bg-[#2563D0] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#2979FF]"
+                >
+                  Register
+                </button>
+              </div>
+
+              {/* Link Login */}
+              <div className="text-center text-sm pt-2">
+                <Link
+                  href="/login/student"
+                  className="font-medium text-[#2979FF] hover:text-[#2563D0]"
+                >
+                  Login to your account
+                </Link>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
