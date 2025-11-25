@@ -1,51 +1,50 @@
 
 import React from "react";
-import { Search, Link as LinkIcon } from "lucide-react"; // Re-add LinkIcon
+import { Search, Link as LinkIcon, ArrowUpRight } from "lucide-react";
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative text-center pt-24 pb-32 overflow-hidden">
+    <section className="relative h-[calc(100vh-80px)] flex flex-col justify-end pb-12 overflow-hidden">
       {/* Background Illustration */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         style={{ backgroundImage: "url('https://img.freepik.com/free-photo/friends-using-laptop-learn-study-session_23-2149285399.jpg?ga=GA1.1.1471941365.1762528201&semt=ais_hybrid&w=740&q=80')" }}
       >
-        <div className="absolute inset-0 w-full h-full bg-black opacity-50"></div>
+        <div className="absolute inset-0 w-full h-full bg-black/60"></div>
       </div>
-      <div className="absolute inset-0 w-full h-full backdrop-blur-sm"></div>
 
-      <div className="relative z-10">
-        <h1 className="text-[48px] font-extrabold mb-4 text-white tracking-tight drop-shadow-lg">
-          Welcome to <span className="text-[#4DCEFF]">Chaintificate</span>
-        </h1>
-        <p className="text-xl text-gray-200 mb-16 max-w-2xl mx-auto drop-shadow-md">
-          Verify blockchain certificates instantly or manage your credentials
-          securely
-        </p>
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Re-introducing the search input and verify button */}
-        <div className="max-w-xl mx-auto p-8 bg-white/10 backdrop-blur-lg rounded-2xl shadow-xl border border-white/20 mt-8">
-          <h3 className="text-2xl font-bold mb-3 text-white">
-            Search Certificate By Link
-          </h3>
-          <p className="text-md text-gray-300 mb-8">
-            Enter a blockchain link to verify any certificate instantly
+        {/* Main Text Area */}
+        <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-16">
+          <h1 className="text-6xl md:text-8xl font-black text-white leading-[0.9] tracking-tight">
+            Secure and <br />
+            verifiable <br />
+            certificate tracker
+          </h1>
+
+          <p className="text-xl md:text-2xl text-gray-200 max-w-md text-right font-medium leading-relaxed">
+            An essential tool for global universities, students, and employers to verify credentials instantly.
           </p>
+        </div>
 
-          <div className="relative mb-6">
-            <LinkIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-300" />
-            <input
-              type="text"
-              placeholder="Paste Blockchain Certificate link here..."
-              className="w-full py-4 pl-12 pr-4 bg-white/10 border border-white/20 rounded-lg text-white placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#4DCEFF] transition-all duration-300"
-            />
+        {/* Search Bar (Styled like the reference CTA) */}
+        <div className="w-full bg-white rounded-full p-2 md:p-3 flex items-center shadow-2xl transform transition-all hover:scale-[1.005]">
+          <div className="pl-6 pr-4 hidden sm:block">
+            <LinkIcon className="w-6 h-6 text-gray-400" />
           </div>
-
-          <button className="flex items-center justify-center w-full bg-[#0092FF] hover:bg-[#007ACF] text-white font-bold py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl text-lg">
-            <Search className="h-6 w-6 mr-3" />
-            Verify Certificate
+          <input
+            type="text"
+            placeholder="Paste Blockchain Certificate link here..."
+            className="flex-grow bg-transparent text-gray-800 placeholder-gray-400 text-lg md:text-xl font-bold focus:outline-none px-4"
+          />
+          <button className="flex items-center gap-2 bg-[#0092FF] text-white rounded-full px-8 py-4 font-bold text-lg hover:bg-[#007ACF] transition-colors shadow-sm">
+            <span>VERIFY</span>
+            <ArrowUpRight className="w-5 h-5" />
           </button>
         </div>
+
       </div>
     </section>
   );
