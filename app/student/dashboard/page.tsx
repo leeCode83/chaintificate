@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import Header from "../../components/Header";
 import { FileText, GraduationCap, Award, Clock, Activity, PieChart as PieChartIcon } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
@@ -9,6 +10,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recha
 // --- MOCK DATA ---
 const certificatesData = [
   {
+    id: "cert-001",
     title: "Advanced React Patterns",
     institute: "Tech Institute",
     date: "2024-09-15",
@@ -17,6 +19,7 @@ const certificatesData = [
     category: "Development",
   },
   {
+    id: "cert-002",
     title: "HTML & CSS Mastery",
     institute: "Online Academy",
     date: "2024-08-01",
@@ -24,6 +27,7 @@ const certificatesData = [
     category: "Development",
   },
   {
+    id: "cert-003",
     title: "JavaScript Algorithms",
     institute: "Code School",
     date: "2024-07-20",
@@ -31,6 +35,7 @@ const certificatesData = [
     category: "Development",
   },
   {
+    id: "cert-004",
     title: "UI/UX Design Fundamentals",
     institute: "Design Hub",
     date: "2024-06-10",
@@ -41,6 +46,7 @@ const certificatesData = [
 
 const degreesData = [
   {
+    id: "deg-001",
     title: "Bachelor of Computer Science",
     institute: "University of Excellence",
     date: "2023-06-30",
@@ -49,6 +55,7 @@ const degreesData = [
     category: "Degree",
   },
   {
+    id: "deg-002",
     title: "Master of Business Administration",
     institute: "Global University",
     date: "2021-12-15",
@@ -67,13 +74,14 @@ const chartData = [
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const CertificateCard: React.FC<{
+  id: string;
   imageUrl?: string;
   title: string;
   institute: string;
   date: string;
   isFeatured?: boolean;
   category?: string;
-}> = ({ imageUrl, title, institute, date, isFeatured = false, category }) => {
+}> = ({ id, imageUrl, title, institute, date, isFeatured = false, category }) => {
   return (
     <Card className={`transition-all duration-300 hover:shadow-lg border border-gray-200 bg-white ${isFeatured ? 'ring-1 ring-blue-500' : ''}`}>
       <CardContent className="p-6">
@@ -106,9 +114,11 @@ const CertificateCard: React.FC<{
 
           {/* Right Side: Actions */}
           <div className="flex-shrink-0">
-            <button className="bg-[#0092FF] hover:bg-[#007ACF] text-white font-semibold px-6 py-2.5 rounded-lg text-sm transition-colors shadow-sm whitespace-nowrap">
-              View Details
-            </button>
+            <Link href={`/student/certificate/${id}`}>
+              <button className="bg-[#0092FF] hover:bg-[#007ACF] text-white font-semibold px-6 py-2.5 rounded-lg text-sm transition-colors shadow-sm whitespace-nowrap">
+                View Details
+              </button>
+            </Link>
           </div>
         </div>
       </CardContent>
@@ -245,6 +255,7 @@ export default function StudentDashboardPage() {
                 {currentData.map((cert, index) => (
                   <CertificateCard
                     key={index}
+                    id={cert.id}
                     title={cert.title}
                     institute={cert.institute}
                     date={cert.date}
