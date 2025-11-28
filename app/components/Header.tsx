@@ -3,6 +3,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./ui/button"; // Import the custom Button component
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import WalletRedirect from "./WalletRedirect";
 
 const Header: React.FC = () => {
   const LOGO_SRC = "/logo.png";
@@ -51,12 +53,8 @@ const Header: React.FC = () => {
 
         {/* Right Side: Actions */}
         <div className="flex items-center space-x-4">
-          <Button asChild variant="ghost" className="text-white hover:bg-white/10 hover:text-white font-semibold">
-            <Link href="/login/student">LOG IN</Link>
-          </Button>
-          <Button asChild className="bg-[#4DCEFF] hover:bg-[#0092FF] text-white rounded-full px-8 font-bold shadow-md">
-            <Link href="/register/student">REGISTER</Link>
-          </Button>
+          <ConnectButton />
+          <WalletRedirect />
         </div>
       </div>
     </header>

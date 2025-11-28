@@ -36,33 +36,7 @@ export default function StudentRegisterPage() {
                     placeholder="Username"
                   />
                 </div>
-
-                <div className="pt-4">
-                  <input
-                    type="email"
-                    required
-                    className="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-[#2979FF] focus:border-[#2979FF] focus:z-10 sm:text-base"
-                    placeholder="Email Address"
-                  />
-                </div>
-
-                <div className="pt-4">
-                  <input
-                    type="password"
-                    required
-                    className="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-[#2979FF] focus:border-[#2979FF] focus:z-10 sm:text-base"
-                    placeholder="Password"
-                  />
-                </div>
-
-                <div className="pt-4">
-                  <input
-                    type="password"
-                    required
-                    className="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-[#2979FF] focus:border-[#2979FF] focus:z-10 sm:text-base"
-                    placeholder="Confirm Password"
-                  />
-                </div>
+                
               </div>
 
               <div className="pt-6">

@@ -42,13 +42,13 @@ export default function DashboardPage() {
             Icon={GraduationCap}
             title="Student"
             description="View and manage your certificates and degrees"
-            href="/login/student" 
+            href="/student/dashboard"
           />
           <RoleCard
             Icon={Landmark}
             title="Institute"
             description="Create and manage certificates for students"
-            href="/register/institute" 
+            href="/institute/dashboard"
           />
         </div>
       </div>

@@ -42,13 +42,11 @@ export default function InstituteRegistrationPage() {
                 className="w-full p-3 border border-gray-300 placeholder-gray-600 text-gray-800 rounded-lg mb-8 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150"
               />
 
-              <Link href="/institute/dashboard">
-                <button
-                  type="button"
-                  className="w-full bg-blue-500 text-white font-bold p-3 rounded-lg hover:bg-blue-600 transition duration-150"
-                >
-                  Create
-                </button>
+              <Link
+                href="/institute/dashboard"
+                className="block w-full bg-blue-500 text-white font-bold p-3 rounded-lg hover:bg-blue-600 transition duration-150 text-center"
+              >
+                Create
               </Link>
             </form>
           </div>

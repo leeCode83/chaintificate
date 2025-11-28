@@ -43,21 +43,8 @@ export default function HomePage() {
   return (
     // Background keseluruhan halaman (sesuai bagian bawah gambar)
     <div className="min-h-screen bg-[#F8FAFC] font-sans flex flex-col">
-      {/* Keyframes for the infinite scroll animation */}
-      <style jsx global>{`
-        @keyframes infinite-scroll {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(-100%);
-          }
-        }
-        .animate-infinite-scroll {
-          animation: infinite-scroll 40s linear infinite;
-        }
-      `}</style>
-      
+      {/* Keyframes for the infinite scroll animation are now in globals.css */}
+
       {/* 1. Header (Navigation Bar) */}
       <Header />
 
