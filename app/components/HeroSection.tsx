@@ -38,6 +38,7 @@ const HeroSection: React.FC = () => {
             type="text"
             placeholder="Paste Blockchain Certificate link here..."
             className="flex-grow bg-transparent text-gray-800 placeholder-gray-400 text-lg md:text-xl font-bold focus:outline-none px-4"
+            suppressHydrationWarning
           />
           <button className="flex items-center gap-2 bg-[#0092FF] text-white rounded-full px-8 py-4 font-bold text-lg hover:bg-[#007ACF] transition-colors shadow-sm">
             <span>VERIFY</span>
