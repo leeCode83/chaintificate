@@ -116,3 +116,104 @@ export const useCreateCollection = () => {
         error: writeError || receiptError || (apiError ? new Error(apiError) : null)
     };
 };
+
+export const useGetAllCertificateCollection = (page = 1, limit = 10) => {
+    const { address: userAddress } = useAccount();
+    const [collections, setCollections] = useState<any[]>([]);
+    const [pagination, setPagination] = useState<{ total: number; page: number; limit: number; totalPages: number } | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchCollections = async () => {
+            if (!userAddress) {
+                setCollections([]);
+                return;
+            }
+
+            setIsLoading(true);
+            setError(null);
+
+            try {
+                const response = await fetch(`/api/certificate/collection?wallet=${userAddress}&page=${page}&limit=${limit}`);
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Failed to fetch collections');
+                }
+
+                const result = await response.json();
+
+                // Handle new response structure { data, pagination }
+                if (result.data && Array.isArray(result.data)) {
+                    setCollections(result.data);
+                    setPagination(result.pagination);
+                } else {
+                    setCollections([]);
+                    setPagination(null);
+                }
+            } catch (err: any) {
+                console.error("Error fetching collections:", err);
+                setError(err.message || "Failed to fetch collections");
+                setCollections([]); // Ensure collections is empty on error
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchCollections();
+    }, [userAddress, page, limit]);
+
+    return {
+        collections,
+        pagination,
+        isLoading,
+        error
+    };
+};
+
+
+
+export const useGetCollectionDetail = (collectionAddress: string) => {
+    const [collection, setCollection] = useState<any | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchCollection = async () => {
+            if (!collectionAddress) {
+                setCollection(null);
+                return;
+            }
+
+            setIsLoading(true);
+            setError(null);
+
+            try {
+                const response = await fetch(`/api/certificate/collection/${collectionAddress}`);
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Failed to fetch collection details');
+                }
+
+                const data = await response.json();
+                setCollection(data);
+            } catch (err: any) {
+                console.error("Error fetching collection details:", err);
+                setError(err.message || "Failed to fetch collection details");
+                setCollection(null);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchCollection();
+    }, [collectionAddress]);
+
+    return {
+        collection,
+        isLoading,
+        error
+    };
+};

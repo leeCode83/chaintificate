@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useParams } from "next/navigation";
-import Header from "../../../components/Header";
+import Header from "../../../../components/Header";
 import { Input } from "@/app/components/ui/input";
 import { Button } from "@/app/components/ui/button";
 import { Share2, CheckCircle } from "lucide-react";
