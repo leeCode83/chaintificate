@@ -1,0 +1,19 @@
+{
+    "name": "",
+    "description": "",
+    "image": "",
+    "attributes": [
+        {
+            "trait_type": "created_at",
+            "value": ""
+        },
+        {
+            "trait_type": "recipient",
+            "value": ""
+        },
+        {
+            "trait_type": "issuer",
+            "value": ""
+        }
+    ]
+}
