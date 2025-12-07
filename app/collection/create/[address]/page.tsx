@@ -3,12 +3,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import Header from "../../../../components/Header";
+import Header from "../../../components/Header";
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
 import { Upload, ArrowLeft, Loader2 } from "lucide-react";
-import { useGetCollectionDetail, useCreateCertificate } from "../../../../../hooks/useCertificate";
-import { usePinata } from "../../../../../hooks/usePinata";
+import { useGetCollectionDetail, useCreateCertificate } from "../../../../hooks/useCertificate";
+import { usePinata } from "../../../../hooks/usePinata";
 
 export default function MintCertificatePage() {
     const params = useParams();

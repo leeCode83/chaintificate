@@ -2,11 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Header from "../../../components/Header";
+import Header from "../../components/Header";
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
 import { ArrowLeft, Loader2 } from "lucide-react";
-import { useCreateCollection } from "../../../../hooks/useCertificate";
+import { useCreateCollection } from "../../../hooks/useCertificate";
 
 export default function CreateCollectionPage() {
     // Collection Form State

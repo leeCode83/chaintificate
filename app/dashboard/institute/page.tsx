@@ -64,7 +64,7 @@ export default function InstituteDashboardPage() {
                         <h1 className="text-3xl font-bold text-gray-900">Institute Dashboard</h1>
                         <p className="text-gray-500 mt-1">Manage your issued certificates and track performance.</p>
                     </div>
-                    <Link href="/institute/create/collection">
+                    <Link href="/collection/create">
                         <Button className="bg-[#0092FF] hover:bg-[#007ACF] text-white font-semibold px-6 py-6 rounded-lg shadow-md flex items-center gap-2">
                             <Plus className="h-5 w-5" /> Create New Collection
                         </Button>
@@ -116,7 +116,7 @@ export default function InstituteDashboardPage() {
                                                 <p className="text-sm text-gray-500">
                                                     Created: <span className="font-medium text-gray-700">{new Date(collection.createdAt).toLocaleDateString()}</span>
                                                 </p>
-                                                <Link href={`/institute/dashboard/collection/${collection.address}`}>
+                                                <Link href={`/collection/${collection.address}`}>
                                                     <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50 hover:text-blue-700">
                                                         View Details
                                                     </Button>

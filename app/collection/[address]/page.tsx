@@ -2,10 +2,10 @@
 
 import React from "react";
 import { useParams } from "next/navigation";
-import Header from "../../../../components/Header";
+import Header from "../../components/Header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
 import { Button } from "@/app/components/ui/button";
-import { useGetCollectionDetail } from "../../../../../hooks/useCertificate";
+import { useGetCollectionDetail } from "../../../hooks/useCertificate";
 import { Calendar, FileText, Hash, ArrowLeft, Copy, Plus } from "lucide-react";
 import Link from "next/link";
 
@@ -77,7 +77,7 @@ export default function CollectionDetailPage() {
                     </div>
 
                     <div className="mt-6 flex justify-end">
-                        <Link href={`/institute/create/collection/${address}`}>
+                        <Link href={`/collection/create/${address}`}>
                             <Button className="bg-[#0092FF] hover:bg-[#007ACF] text-white font-semibold px-6 py-2 rounded-lg shadow-md flex items-center gap-2">
                                 <Plus className="h-5 w-5" /> Mint New Certificate
                             </Button>

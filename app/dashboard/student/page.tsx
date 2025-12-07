@@ -147,9 +147,28 @@ const StatCard: React.FC<{
   </Card>
 );
 
+import { useAccount } from "wagmi";
+import { useGetStudentCertificates } from "../../../hooks/useStudent";
+
+// ... (keep existing imports)
+
 export default function StudentDashboardPage() {
+  const { address } = useAccount();
+  const { data: certificates, isLoading } = useGetStudentCertificates(address);
+
   const [activeTab, setActiveTab] = useState<"certificates" | "degrees">("certificates");
-  const currentData = activeTab === "certificates" ? certificatesData : degreesData;
+
+  const realCertificatesData = certificates?.map((cert) => ({
+    id: cert.id,
+    title: cert.name,
+    institute: cert.collection.institution?.name || cert.collection.name,
+    date: new Date(cert.createdAt).toLocaleDateString(),
+    imageUrl: cert.tokenUri,
+    isFeatured: false, // You might want to add logic for this later
+    category: "General", // Or derive from collection description/name
+  })) || [];
+
+  const currentData = activeTab === "certificates" ? realCertificatesData : degreesData;
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] font-sans pb-20">
@@ -233,8 +252,8 @@ export default function StudentDashboardPage() {
                   <button
                     onClick={() => setActiveTab("certificates")}
                     className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${activeTab === "certificates"
-                        ? "bg-white text-blue-600 shadow-sm"
-                        : "text-gray-500 hover:text-gray-700"
+                      ? "bg-white text-blue-600 shadow-sm"
+                      : "text-gray-500 hover:text-gray-700"
                       }`}
                   >
                     Certificates
@@ -242,8 +261,8 @@ export default function StudentDashboardPage() {
                   <button
                     onClick={() => setActiveTab("degrees")}
                     className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${activeTab === "degrees"
-                        ? "bg-white text-blue-600 shadow-sm"
-                        : "text-gray-500 hover:text-gray-700"
+                      ? "bg-white text-blue-600 shadow-sm"
+                      : "text-gray-500 hover:text-gray-700"
                       }`}
                   >
                     Degrees
