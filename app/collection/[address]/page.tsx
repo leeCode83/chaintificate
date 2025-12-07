@@ -39,7 +39,7 @@ export default function CollectionDetailPage() {
                 <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
                     <div className="flex flex-col items-center justify-center h-64 gap-4">
                         <p className="text-red-500">Error: {error || "Collection not found"}</p>
-                        <Link href="/institute/dashboard">
+                        <Link href="/dashboard/institute">
                             <Button variant="outline">Back to Dashboard</Button>
                         </Link>
                     </div>
@@ -55,7 +55,7 @@ export default function CollectionDetailPage() {
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
                 {/* Back Button */}
                 <div className="mb-6">
-                    <Link href="/institute/dashboard" className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors">
+                    <Link href="/dashboard/institute" className="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors">
                         <ArrowLeft className="h-4 w-4 mr-2" />
                         Back to Dashboard
                     </Link>

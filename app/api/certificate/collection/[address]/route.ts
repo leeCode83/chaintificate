@@ -56,7 +56,7 @@ export async function POST(
     try {
         const { address } = await params;
         const body = await request.json();
-        const { studentWallet, certificateName, tokenId, tokenUri } = body;
+        const { studentWallet, certificateName, tokenId, tokenUri, studentName } = body;
 
         if (!address) {
             return NextResponse.json(
@@ -88,7 +88,7 @@ export async function POST(
         // Find or create student
         let student = await prisma.student.findUnique({
             where: {
-                wallet: studentWallet,
+                wallet: studentWallet.toLowerCase(),
             },
         });
 
@@ -96,7 +96,7 @@ export async function POST(
             student = await prisma.student.create({
                 data: {
                     wallet: studentWallet,
-                    name: studentWallet, // Use wallet as name as requested
+                    name: studentName || studentWallet,
                 },
             });
         }

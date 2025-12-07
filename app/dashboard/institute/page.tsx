@@ -96,9 +96,9 @@ export default function InstituteDashboardPage() {
                                 <Card key={collection.address} className="overflow-hidden hover:shadow-lg transition-shadow border border-gray-200">
                                     <div className="flex flex-col md:flex-row">
                                         {/* Image Section - Placeholder */}
-                                        <div className="w-full md:w-48 h-48 md:h-auto relative bg-gray-100 flex items-center justify-center">
+                                        {/* <div className="w-full md:w-48 h-48 md:h-auto relative bg-gray-100 flex items-center justify-center">
                                             <FileText className="h-12 w-12 text-gray-300" />
-                                        </div>
+                                        </div> */}
 
                                         {/* Content Section */}
                                         <div className="flex-1 p-6 flex flex-col justify-between">
