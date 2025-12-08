@@ -6,7 +6,7 @@ import { decodeEventLog } from 'viem';
 
 export const useCreateCollection = () => {
     const { address: userAddress } = useAccount();
-    const [pendingData, setPendingData] = useState<{ name: string; description: string } | null>(null);
+    const [pendingData, setPendingData] = useState<{ name: string; description: string; type: string } | null>(null);
     const [isApiPending, setIsApiPending] = useState(false);
     const [apiError, setApiError] = useState<string | null>(null);
 
@@ -26,11 +26,11 @@ export const useCreateCollection = () => {
         hash,
     });
 
-    const createCertificateCollection = async (name: string, symbol: string, description: string) => {
+    const createCertificateCollection = async (name: string, symbol: string, description: string, type: string) => {
         if (!CHAINTIFICATE_ADDRESS) {
             throw new Error("Chaintificate contract address is not defined");
         }
-        setPendingData({ name, description });
+        setPendingData({ name, description, type });
         setApiError(null);
         try {
             const tx = await writeContractAsync({
@@ -82,6 +82,7 @@ export const useCreateCollection = () => {
                                 address: newCollectionAddress,
                                 name: pendingData.name,
                                 description: pendingData.description,
+                                type: pendingData.type,
                                 wallet: userAddress,
                             }),
                         });
@@ -225,6 +226,7 @@ export const useCreateCertificate = () => {
         recipient: string;
         tokenURI: string;
         certificateName: string;
+        studentName: string;
     } | null>(null);
     const [isApiPending, setIsApiPending] = useState(false);
     const [apiError, setApiError] = useState<string | null>(null);
@@ -245,12 +247,12 @@ export const useCreateCertificate = () => {
         hash,
     });
 
-    const createCertificate = async (collectionAddress: string, recipient: string, tokenURI: string, certificateName: string) => {
+    const createCertificate = async (collectionAddress: string, recipient: string, tokenURI: string, certificateName: string, studentName: string) => {
         if (!collectionAddress || !recipient || !tokenURI || !certificateName) {
             throw new Error("Missing required arguments: collectionAddress, recipient, tokenURI, or certificateName");
         }
 
-        setPendingData({ collectionAddress, recipient, tokenURI, certificateName });
+        setPendingData({ collectionAddress, recipient, tokenURI, certificateName, studentName });
         setApiError(null);
 
         const mintPromise = async () => {
@@ -314,6 +316,7 @@ export const useCreateCertificate = () => {
                                 certificateName: pendingData.certificateName,
                                 tokenId: tokenId,
                                 tokenUri: pendingData.tokenURI,
+                                studentName: pendingData.studentName,
                             }),
                         });
 
@@ -351,5 +354,7 @@ export const useCreateCertificate = () => {
         error: writeError || receiptError || (apiError ? new Error(apiError) : null)
     };
 };
+
+
 
 

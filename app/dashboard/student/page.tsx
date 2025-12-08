@@ -8,61 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/ca
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 
 // --- MOCK DATA ---
-const certificatesData = [
-  {
-    id: "cert-001",
-    title: "Advanced React Patterns",
-    institute: "Tech Institute",
-    date: "2024-09-15",
-    imageUrl: "https://img.freepik.com/free-vector/gradient-certificate-template_23-2149436222.jpg",
-    isFeatured: true,
-    category: "Development",
-  },
-  {
-    id: "cert-002",
-    title: "HTML & CSS Mastery",
-    institute: "Online Academy",
-    date: "2024-08-01",
-    isFeatured: false,
-    category: "Development",
-  },
-  {
-    id: "cert-003",
-    title: "JavaScript Algorithms",
-    institute: "Code School",
-    date: "2024-07-20",
-    isFeatured: false,
-    category: "Development",
-  },
-  {
-    id: "cert-004",
-    title: "UI/UX Design Fundamentals",
-    institute: "Design Hub",
-    date: "2024-06-10",
-    isFeatured: false,
-    category: "Design",
-  },
-];
-
-const degreesData = [
-  {
-    id: "deg-001",
-    title: "Bachelor of Computer Science",
-    institute: "University of Excellence",
-    date: "2023-06-30",
-    imageUrl: "https://img.freepik.com/free-vector/diploma-template-design_1017-19725.jpg",
-    isFeatured: true,
-    category: "Degree",
-  },
-  {
-    id: "deg-002",
-    title: "Master of Business Administration",
-    institute: "Global University",
-    date: "2021-12-15",
-    isFeatured: false,
-    category: "Degree",
-  },
-];
+const degreesData: any[] = [];
 
 // Chart Data
 const chartData = [
@@ -147,8 +93,27 @@ const StatCard: React.FC<{
   </Card>
 );
 
+import { useAccount } from "wagmi";
+import { useGetStudentCertificates } from "../../../hooks/useStudent";
+
+// ... (keep existing imports)
+
 export default function StudentDashboardPage() {
+  const { address } = useAccount();
+  const { data: certificates, isLoading } = useGetStudentCertificates(address);
+
   const [activeTab, setActiveTab] = useState<"certificates" | "degrees">("certificates");
+
+  const certificatesData = certificates?.map((cert) => ({
+    id: cert.id,
+    title: cert.name,
+    institute: cert.collection.institution?.name || cert.collection.name,
+    date: new Date(cert.createdAt).toLocaleDateString(),
+    imageUrl: cert.tokenUri,
+    isFeatured: false, // You might want to add logic for this later
+    category: "General", // Or derive from collection description/name
+  })) || [];
+
   const currentData = activeTab === "certificates" ? certificatesData : degreesData;
 
   return (
@@ -233,8 +198,8 @@ export default function StudentDashboardPage() {
                   <button
                     onClick={() => setActiveTab("certificates")}
                     className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${activeTab === "certificates"
-                        ? "bg-white text-blue-600 shadow-sm"
-                        : "text-gray-500 hover:text-gray-700"
+                      ? "bg-white text-blue-600 shadow-sm"
+                      : "text-gray-500 hover:text-gray-700"
                       }`}
                   >
                     Certificates
@@ -242,8 +207,8 @@ export default function StudentDashboardPage() {
                   <button
                     onClick={() => setActiveTab("degrees")}
                     className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${activeTab === "degrees"
-                        ? "bg-white text-blue-600 shadow-sm"
-                        : "text-gray-500 hover:text-gray-700"
+                      ? "bg-white text-blue-600 shadow-sm"
+                      : "text-gray-500 hover:text-gray-700"
                       }`}
                   >
                     Degrees

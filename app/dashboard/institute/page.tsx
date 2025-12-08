@@ -64,7 +64,7 @@ export default function InstituteDashboardPage() {
                         <h1 className="text-3xl font-bold text-gray-900">Institute Dashboard</h1>
                         <p className="text-gray-500 mt-1">Manage your issued certificates and track performance.</p>
                     </div>
-                    <Link href="/institute/create/collection">
+                    <Link href="/collection/create">
                         <Button className="bg-[#0092FF] hover:bg-[#007ACF] text-white font-semibold px-6 py-6 rounded-lg shadow-md flex items-center gap-2">
                             <Plus className="h-5 w-5" /> Create New Collection
                         </Button>
@@ -96,9 +96,9 @@ export default function InstituteDashboardPage() {
                                 <Card key={collection.address} className="overflow-hidden hover:shadow-lg transition-shadow border border-gray-200">
                                     <div className="flex flex-col md:flex-row">
                                         {/* Image Section - Placeholder */}
-                                        <div className="w-full md:w-48 h-48 md:h-auto relative bg-gray-100 flex items-center justify-center">
+                                        {/* <div className="w-full md:w-48 h-48 md:h-auto relative bg-gray-100 flex items-center justify-center">
                                             <FileText className="h-12 w-12 text-gray-300" />
-                                        </div>
+                                        </div> */}
 
                                         {/* Content Section */}
                                         <div className="flex-1 p-6 flex flex-col justify-between">
@@ -116,7 +116,7 @@ export default function InstituteDashboardPage() {
                                                 <p className="text-sm text-gray-500">
                                                     Created: <span className="font-medium text-gray-700">{new Date(collection.createdAt).toLocaleDateString()}</span>
                                                 </p>
-                                                <Link href={`/institute/dashboard/collection/${collection.address}`}>
+                                                <Link href={`/collection/${collection.address}`}>
                                                     <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50 hover:text-blue-700">
                                                         View Details
                                                     </Button>
