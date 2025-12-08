@@ -33,6 +33,13 @@ const CertificateCard: React.FC<{
       <CardContent className="p-6">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
 
+          {/* Image */}
+          {imageUrl && (
+            <div className="flex-shrink-0">
+              <img src={imageUrl} alt={title} className="w-16 h-16 sm:w-24 sm:h-24 object-cover rounded-lg border border-gray-100" />
+            </div>
+          )}
+
           {/* Left Side: Info */}
           <div className="flex-grow space-y-2">
             <div className="flex items-center gap-3">
@@ -60,7 +67,7 @@ const CertificateCard: React.FC<{
 
           {/* Right Side: Actions */}
           <div className="flex-shrink-0">
-            <Link href={`/student/certificate/${id}`}>
+            <Link href={`/dashboard/student/certificate/${id}`}>
               <button className="bg-[#0092FF] hover:bg-[#007ACF] text-white font-semibold px-6 py-2.5 rounded-lg text-sm transition-colors shadow-sm whitespace-nowrap">
                 View Details
               </button>
@@ -109,7 +116,7 @@ export default function StudentDashboardPage() {
     title: cert.name,
     institute: cert.collection.institution?.name || cert.collection.name,
     date: new Date(cert.createdAt).toLocaleDateString(),
-    imageUrl: cert.tokenUri,
+    imageUrl: cert.image || cert.tokenUri,
     isFeatured: false, // You might want to add logic for this later
     category: cert.collection.type || "General",
   })) || [];
