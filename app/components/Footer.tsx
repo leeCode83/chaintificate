@@ -1,82 +1,76 @@
 // components/Footer.tsx
-import React from 'react';
-import { Phone, MapPin, Mail } from 'lucide-react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 const Footer: React.FC = () => {
+  const LOGO_SRC = "/logo.png";
+
   return (
-    <footer className="bg-[#2979FF] border-t border-gray-200 pt-16 pb-8">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-          {/* Contact Section */}
-          <div className="col-span-2 md:col-span-1 mb-8 md:mb-0">
-            <Image src="/logo.png" alt="Chaintificate Logo" width={50} height={50} className="mb-4" />
-            <h3 className="text-xl font-bold text-white mb-4">Contact</h3>
-            <ul className="text-gray-200 space-y-3">
-              <li className="flex items-start">
-                <Phone className="h-5 w-5 mr-3 mt-1 text-gray-200" />
-                <span>+1 234 567 890</span>
-              </li>
-              <li className="flex items-start">
-                <MapPin className="h-5 w-5 mr-3 mt-1 text-gray-200" />
-                <span>123 Blockchain St, Web3 City, 12345</span>
-              </li>
-              <li className="flex items-start">
-                <Mail className="h-5 w-5 mr-3 mt-1 text-gray-200" />
-                <span>hello@chaintificate.com</span>
-              </li>
-            </ul>
+    <footer className="relative bg-gradient-to-r from-blue-900 via-cyan-800 to-blue-900 border-t border-cyan-400/30 overflow-hidden">
+      {/* Top accent line */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+
+      {/* Background effects */}
+      <div className="absolute inset-0">
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          {/* Logo section */}
+          <div className="flex items-center gap-3 group">
+            <div className="relative">
+              {/* Multi-layer glow */}
+              <div className="absolute -inset-3 bg-white/30 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse"></div>
+              <div className="absolute -inset-2 bg-white/20 rounded-xl blur-lg opacity-0 group-hover:opacity-75 transition-opacity duration-500"></div>
+              {/* Logo without background */}
+              <Image
+                src={LOGO_SRC}
+                alt="Chaintificate Logo"
+                width={50}
+                height={50}
+                className="relative z-10 transition-all duration-500 group-hover:scale-110"
+              />
+            </div>
           </div>
 
-          {/* Navigate Section */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">Navigate</h3>
-            <ul className="text-gray-200 space-y-2">
-              <li><a href="#" className="hover:text-white transition-colors">Services</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Success Stories</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Discover</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Care</a></li>
-            </ul>
+          {/* Copyright */}
+          <div className="relative group">
+            <div className="text-cyan-100 text-sm text-center transition-colors duration-300 group-hover:text-white">
+              © 2025 Chaintificate.{" "}
+              <span className="text-white font-semibold">
+                All rights reserved.
+              </span>
+            </div>
           </div>
 
-          {/* Solution Section */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">Solution</h3>
-            <ul className="text-gray-200 space-y-2">
-              <li><a href="#" className="hover:text-white transition-colors">Get in Touch</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Technology</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Who are We?</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Expertise</a></li>
-            </ul>
-          </div>
-
-          {/* Discover Section */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">Discover</h3>
-            <ul className="text-gray-200 space-y-2">
-              <li><a href="#" className="hover:text-white transition-colors">Latest News</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">New Arrivals</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Career</a></li>
-            </ul>
-          </div>
-
-          {/* Follow Us Section */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-4">Follow Us</h3>
-            <ul className="text-gray-200 space-y-2">
-              <li><a href="#" className="hover:text-white transition-colors">Facebook</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Instagram</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">LinkedIn</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
-            </ul>
+          {/* Links */}
+          <div className="flex gap-8 text-cyan-100 text-sm font-medium">
+            {["Privacy", "Terms", "Contact"].map((link, i) => (
+              <a
+                key={i}
+                href="#"
+                className="relative group/link transition-colors duration-300 hover:text-white"
+              >
+                <span className="relative z-10">{link}</span>
+                {/* Hover underline */}
+                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover/link:w-full transition-all duration-300"></div>
+                {/* Hover glow */}
+                <div className="absolute -inset-2 bg-white/20 rounded blur opacity-0 group-hover/link:opacity-100 transition-opacity duration-300"></div>
+              </a>
+            ))}
           </div>
         </div>
 
-        <div className="border-t border-gray-400 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center text-gray-200">
-          <p className="text-sm mb-4 md:mb-0">&copy; {new Date().getFullYear()} Chaintificate. All rights reserved.</p>
-          <div className="flex space-x-6">
-            <a href="#" className="text-sm hover:text-white transition-colors">Privacy & Policy</a>
-            <a href="#" className="text-sm hover:text-white transition-colors">Terms & Condition</a>
+        {/* Bottom accent */}
+        <div className="mt-12 pt-8 border-t border-cyan-400/20">
+          <div className="flex items-center justify-center gap-2 text-cyan-200 text-xs">
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
+            <span>
+              System Status:{" "}
+              <span className="text-green-300 font-semibold">Operational</span>
+            </span>
           </div>
         </div>
       </div>

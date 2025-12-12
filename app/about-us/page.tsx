@@ -2,238 +2,324 @@
 
 import React from "react";
 import Header from "@/app/components/Header";
-import Footer from "@/app/components/Footer"; // Assuming a Footer component exists based on page.tsx
-import { Target, Lightbulb, Shield, Zap, Globe, Users, Award, Briefcase } from "lucide-react";
-import Image from "next/image";
+import Footer from "@/app/components/Footer";
+import { Target, Lightbulb, Shield, Zap, Globe, Users } from "lucide-react";
 
-// --- Mock Data ---
 const features = [
-    {
-        icon: Shield,
-        title: "Immutability",
-        description: "Certificates are stored on the blockchain, ensuring they cannot be tampered with or forged.",
-    },
-    {
-        icon: Zap,
-        title: "Instant Verification",
-        description: "Employers can verify credentials in seconds without intermediaries or background checks.",
-    },
-    {
-        icon: Globe,
-        title: "Global Recognition",
-        description: "A standardized, decentralized system that is recognized and accessible worldwide.",
-    },
-    {
-        icon: Users,
-        title: "Student Ownership",
-        description: "Students own their data and control who has access to their academic achievements.",
-    },
+  {
+    icon: Shield,
+    title: "Immutability",
+    description:
+      "Certificates are stored on the blockchain, ensuring they cannot be tampered with or forged.",
+    gradient: "from-blue-500 to-cyan-600",
+  },
+  {
+    icon: Zap,
+    title: "Instant Verification",
+    description:
+      "Employers can verify credentials in seconds without intermediaries or background checks.",
+    gradient: "from-cyan-500 to-blue-700",
+  },
+  {
+    icon: Globe,
+    title: "Global Recognition",
+    description:
+      "A standardized, decentralized system that is recognized and accessible worldwide.",
+    gradient: "from-blue-600 to-cyan-600",
+  },
+  {
+    icon: Users,
+    title: "Student Ownership",
+    description:
+      "Students own their data and control who has access to their academic achievements.",
+    gradient: "from-cyan-600 to-blue-700",
+  },
 ];
 
 const founders = [
-    {
-        name: "Alex Rivera",
-        role: "CEO & Co-Founder",
-        image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=400", // Placeholder
-    },
-    {
-        name: "Sarah Chen",
-        role: "CTO & Co-Founder",
-        image: "https://images.unsplash.com/photo-1573496359-136d47558363?auto=format&fit=crop&q=80&w=400&h=400", // Placeholder
-    },
-    {
-        name: "Marcus Johnson",
-        role: "Head of Blockchain",
-        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400", // Placeholder
-    },
-    {
-        name: "Emily Davis",
-        role: "Head of Design",
-        image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400&h=400", // Placeholder
-    },
+  {
+    name: "Alex Rivera",
+    role: "CEO & Co-Founder",
+    image:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=400",
+    gradient: "from-blue-600 to-cyan-600",
+  },
+  {
+    name: "Sarah Chen",
+    role: "CTO & Co-Founder",
+    image:
+      "https://images.unsplash.com/photo-1573496359-136d47558363?auto=format&fit=crop&q=80&w=400&h=400",
+    gradient: "from-cyan-600 to-blue-700",
+  },
+  {
+    name: "Marcus Johnson",
+    role: "Head of Blockchain",
+    image:
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400",
+    gradient: "from-blue-700 to-cyan-700",
+  },
+  {
+    name: "Emily Davis",
+    role: "Head of Design",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400&h=400",
+    gradient: "from-cyan-700 to-blue-800",
+  },
 ];
 
 const partners = [
-    "TechUniversity", "GlobalEd", "BlockAcademy", "FutureSkills", "EduChain", "CertifyNow"
+  "TechUniversity",
+  "GlobalEd",
+  "BlockAcademy",
+  "FutureSkills",
+  "EduChain",
+  "CertifyNow",
 ];
 
 export default function AboutUsPage() {
-    return (
-        <div className="min-h-screen bg-[#F8FAFC] font-sans">
-            <Header />
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-cyan-50 font-sans">
+      <Header />
 
-            <main className="overflow-hidden">
-                {/* --- Hero Section --- */}
-                <section className="relative py-24 bg-white overflow-hidden">
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-                    <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-blue-400 opacity-20 blur-[100px]"></div>
-                    <div className="absolute right-0 bottom-0 -z-10 h-[310px] w-[310px] rounded-full bg-purple-400 opacity-20 blur-[100px]"></div>
+      <main className="overflow-hidden">
+        {/* Hero Section */}
+        <section className="relative py-32 overflow-hidden">
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+            <div className="absolute left-0 right-0 top-0 m-auto h-[400px] w-[400px] rounded-full bg-blue-400 opacity-15 blur-[120px]"></div>
+            <div className="absolute right-0 bottom-0 h-[400px] w-[400px] rounded-full bg-cyan-400 opacity-15 blur-[120px]"></div>
+          </div>
 
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center gap-16">
-                        <div className="w-full md:w-1/2 animate-fade-in-up">
-                            <span className="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 font-bold text-sm mb-6 tracking-wider uppercase">
-                                Our Story
-                            </span>
-                            <h1 className="text-5xl md:text-6xl font-space font-bold text-gray-900 leading-[1.1] mb-6">
-                                Redefining Trust in <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Digital Credentials</span>
-                            </h1>
-                            <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                                Chaintificate is building the future of academic verification. We empower institutions to issue tamper-proof certificates and enable students to truly own their achievements on the blockchain.
-                            </p>
-                            <div className="flex gap-4">
-                                <button className="px-8 py-3.5 bg-gray-900 text-white font-bold rounded-lg hover:bg-gray-800 transition-colors shadow-lg shadow-blue-500/20">
-                                    Get Started
-                                </button>
-                                <button className="px-8 py-3.5 bg-white text-gray-900 font-bold border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-                                    Learn More
-                                </button>
-                            </div>
-                        </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center gap-16">
+            <div className="w-full md:w-1/2 animate-fade-in-up">
+              <span className="inline-block px-6 py-2 rounded-full bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 font-black text-sm mb-8 tracking-wider uppercase border-2 border-blue-200">
+                Our Story
+              </span>
+              <h1 className="text-5xl md:text-7xl font-black text-gray-900 leading-[1.1] mb-8">
+                Redefining Trust in{" "}
+                <span className="relative inline-block">
+                  <span className="absolute -inset-2 bg-gradient-to-r from-blue-400 to-cyan-500 blur-2xl opacity-50"></span>
+                  <span className="relative bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                    Digital Credentials
+                  </span>
+                </span>
+              </h1>
+              <p className="text-xl text-gray-600 leading-relaxed mb-10">
+                Chaintificate is building the future of academic verification.
+                We empower institutions to issue tamper-proof certificates and
+                enable students to truly own their achievements on the
+                blockchain.
+              </p>
+              <div className="flex gap-4">
+                <button className="relative group overflow-hidden px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-black rounded-2xl hover:shadow-2xl transition-all">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="relative z-10 uppercase tracking-wider">
+                    Get Started
+                  </span>
+                </button>
+                <button className="px-10 py-4 bg-white text-gray-900 font-black border-2 border-blue-200 rounded-2xl hover:bg-blue-50 transition-all">
+                  Learn More
+                </button>
+              </div>
+            </div>
 
-                        <div className="w-full md:w-1/2 relative animate-fade-in-up [animation-delay:200ms]">
-                            <div className="relative aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-blue-600 to-purple-700 p-1">
-                                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
-                                {/* Placeholder for Hero Image - using a gradient/abstract div for now if image is missing */}
-                                <div className="w-full h-full bg-gray-900 relative flex items-center justify-center overflow-hidden rounded-xl">
-                                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=1000')] bg-cover bg-center opacity-70 mix-blend-overlay"></div>
-                                    <div className="text-center p-8 z-10">
-                                        <Shield className="w-24 h-24 text-white mx-auto mb-4 opacity-90" strokeWidth={1} />
-                                        <h3 className="text-2xl font-space font-bold text-white tracking-widest uppercase">Secured by Blockchain</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* Floating Elements */}
-                            <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl border border-gray-100 hidden md:block animate-bounce [animation-duration:3s]">
-                                <div className="flex items-center gap-4">
-                                    <div className="bg-green-100 p-3 rounded-full">
-                                        <CheckSquareIcon className="w-6 h-6 text-green-600" />
-                                    </div>
-                                    <div>
-                                        <p className="text-sm text-gray-500 font-medium">Verification Status</p>
-                                        <p className="text-lg font-bold text-gray-900">100% Authentic</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div
+              className="w-full md:w-1/2 relative animate-fade-in-up"
+              style={{ animationDelay: "200ms" }}
+            >
+              <div className="relative">
+                <div className="absolute -inset-2 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-3xl blur-2xl opacity-30 animate-pulse"></div>
+                <div className="relative aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-blue-600 to-cyan-600 p-2">
+                  <div className="w-full h-full bg-gradient-to-br from-blue-900 to-cyan-900 relative flex items-center justify-center overflow-hidden rounded-2xl">
+                    <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=1000')] bg-cover bg-center opacity-30"></div>
+                    <div className="text-center p-8 z-10">
+                      <Shield
+                        className="w-28 h-28 text-white mx-auto mb-4 opacity-90"
+                        strokeWidth={1.5}
+                      />
+                      <h3 className="text-3xl font-black text-white tracking-widest uppercase">
+                        Secured by Blockchain
+                      </h3>
                     </div>
-                </section>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-                {/* --- Vision & Mission --- */}
-                <section className="py-24 bg-[#F8FAFC]">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {/* Vision */}
-                            <div className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-                                <div className="w-14 h-14 bg-purple-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                                    <Lightbulb className="w-7 h-7 text-purple-600" />
-                                </div>
-                                <h2 className="text-3xl font-space font-bold text-gray-900 mb-4">Our Vision</h2>
-                                <p className="text-gray-600 leading-relaxed text-lg">
-                                    To create a world where academic and professional achievements are universally instantly verifiable, permanently accessible, and completely owned by the individual, eliminating credential fraud forever.
-                                </p>
-                            </div>
-
-                            {/* Mission */}
-                            <div className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-                                <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                                    <Target className="w-7 h-7 text-blue-600" />
-                                </div>
-                                <h2 className="text-3xl font-space font-bold text-gray-900 mb-4">Our Mission</h2>
-                                <p className="text-gray-600 leading-relaxed text-lg">
-                                    We bridge the gap between education and employment by providing a seamless, decentralized infrastructure that connects universities, students, and employers through trust-less blockchain technology.
-                                </p>
-                            </div>
-                        </div>
+        {/* Vision & Mission */}
+        <section className="py-32 bg-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_60%)]"></div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Vision */}
+              <div className="group relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                <div className="relative bg-white/90 backdrop-blur-xl p-12 rounded-3xl border-2 border-blue-200 hover:border-blue-400 hover:shadow-2xl transition-all duration-500">
+                  <div className="relative inline-block mb-8">
+                    <div className="absolute -inset-3 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl blur-lg opacity-30"></div>
+                    <div className="relative w-16 h-16 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl flex items-center justify-center border-2 border-blue-200 group-hover:scale-110 transition-transform duration-300">
+                      <Lightbulb className="w-8 h-8 text-blue-600" />
                     </div>
-                </section>
+                  </div>
+                  <h2 className="text-4xl font-black text-gray-900 mb-6">
+                    Our Vision
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed text-lg font-medium">
+                    To create a world where academic and professional
+                    achievements are universally instantly verifiable,
+                    permanently accessible, and completely owned by the
+                    individual, eliminating credential fraud forever.
+                  </p>
+                </div>
+              </div>
 
-                {/* --- Features Section --- */}
-                <section className="py-24 bg-white relative">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center max-w-3xl mx-auto mb-16">
-                            <h2 className="text-4xl font-space font-bold text-gray-900 mb-4">Why Choose Chaintificate?</h2>
-                            <p className="text-xl text-gray-600">Built on advanced blockchain technology to solve real-world problems.</p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                            {features.map((feature, idx) => (
-                                <div key={idx} className="p-8 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-transparent hover:border-gray-100">
-                                    <feature.icon className="w-10 h-10 text-blue-600 mb-6" />
-                                    <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                                    <p className="text-gray-600">{feature.description}</p>
-                                </div>
-                            ))}
-                        </div>
+              {/* Mission */}
+              <div className="group relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                <div className="relative bg-white/90 backdrop-blur-xl p-12 rounded-3xl border-2 border-blue-200 hover:border-blue-400 hover:shadow-2xl transition-all duration-500">
+                  <div className="relative inline-block mb-8">
+                    <div className="absolute -inset-3 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl blur-lg opacity-30"></div>
+                    <div className="relative w-16 h-16 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-2xl flex items-center justify-center border-2 border-blue-200 group-hover:scale-110 transition-transform duration-300">
+                      <Target className="w-8 h-8 text-blue-600" />
                     </div>
-                </section>
+                  </div>
+                  <h2 className="text-4xl font-black text-gray-900 mb-6">
+                    Our Mission
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed text-lg font-medium">
+                    We bridge the gap between education and employment by
+                    providing a seamless, decentralized infrastructure that
+                    connects universities, students, and employers through
+                    trust-less blockchain technology.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-                {/* --- Partnerships --- */}
-                <section className="py-20 border-y border-gray-100 bg-[#F8FAFC]">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                        <p className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-10">Trusted by Innovative Institutions</p>
-                        <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-                            {partners.map((partner, idx) => (
-                                <span key={idx} className="text-2xl font-space font-bold text-gray-800 flex items-center gap-2">
-                                    <div className="w-8 h-8 bg-gray-300 rounded-full animate-pulse"></div> {/* Placeholder Icon */}
-                                    {partner}
-                                </span>
-                            ))}
-                        </div>
+        {/* Features Section */}
+        <section className="py-32 bg-gradient-to-br from-blue-50 to-cyan-50 relative overflow-hidden">
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-0 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center max-w-3xl mx-auto mb-20">
+              <h2 className="text-5xl font-black text-gray-900 mb-6">
+                Why Choose{" "}
+                <span className="relative inline-block">
+                  <span className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-cyan-500 blur-xl opacity-50"></span>
+                  <span className="relative bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                    Chaintificate?
+                  </span>
+                </span>
+              </h2>
+              <p className="text-xl text-gray-600 font-medium">
+                Built on advanced blockchain technology to solve real-world
+                problems.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {features.map((feature, idx) => (
+                <div key={idx} className="group relative">
+                  <div
+                    className={`absolute -inset-1 bg-gradient-to-r ${feature.gradient} rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500`}
+                  ></div>
+                  <div className="relative p-10 rounded-3xl bg-white/90 backdrop-blur-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border-2 border-blue-200 hover:border-blue-400 h-full">
+                    <div className="relative inline-block mb-8">
+                      <div
+                        className={`absolute -inset-2 bg-gradient-to-r ${feature.gradient} rounded-xl blur-lg opacity-30`}
+                      ></div>
+                      <feature.icon className="relative w-12 h-12 text-blue-600" />
                     </div>
-                </section>
+                    <h3 className="text-2xl font-black text-gray-900 mb-4">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed font-medium">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-                {/* --- Founders Section --- */}
-                <section className="py-24 bg-white">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="text-center mb-16">
-                            <h2 className="text-4xl font-space font-bold text-gray-900 mb-4">Meet The Minds</h2>
-                            <p className="text-xl text-gray-600">The passionate team behind the revolution.</p>
-                        </div>
+        {/* Partnerships */}
+        <section className="py-24 border-y-2 border-blue-200 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p className="text-sm font-black text-blue-600 uppercase tracking-widest mb-12">
+              Trusted by Innovative Institutions
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-10 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+              {partners.map((partner, idx) => (
+                <span
+                  key={idx}
+                  className="text-2xl font-black text-gray-800 flex items-center gap-3 hover:text-blue-600 transition-colors"
+                >
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full animate-pulse border-2 border-blue-200"></div>
+                  {partner}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                            {founders.map((founder, idx) => (
-                                <div key={idx} className="group relative">
-                                    <div className="relative h-96 w-full overflow-hidden rounded-2xl bg-gray-100">
-                                        <img
-                                            src={founder.image}
-                                            alt={founder.name}
-                                            className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
-                                        <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform">
-                                            <h3 className="text-xl font-bold text-white font-space">{founder.name}</h3>
-                                            <p className="text-blue-300 font-medium text-sm">{founder.role}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+        {/* Founders Section */}
+        <section className="py-32 bg-gradient-to-br from-white via-blue-50 to-cyan-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-20">
+              <h2 className="text-5xl font-black text-gray-900 mb-6">
+                Meet The{" "}
+                <span className="relative inline-block">
+                  <span className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-cyan-500 blur-xl opacity-50"></span>
+                  <span className="relative bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                    Minds
+                  </span>
+                </span>
+              </h2>
+              <p className="text-xl text-gray-600 font-medium">
+                The passionate team behind the revolution.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {founders.map((founder, idx) => (
+                <div key={idx} className="group relative">
+                  <div
+                    className={`absolute -inset-1 bg-gradient-to-r ${founder.gradient} rounded-3xl blur-xl opacity-20 group-hover:opacity-50 transition-opacity duration-500`}
+                  ></div>
+                  <div className="relative h-[450px] w-full overflow-hidden rounded-3xl border-2 border-blue-200 group-hover:border-blue-400 shadow-xl group-hover:shadow-2xl transition-all duration-500">
+                    <img
+                      src={founder.image}
+                      alt={founder.name}
+                      className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-t ${founder.gradient} opacity-60 group-hover:opacity-80 transition-opacity`}
+                    ></div>
+                    <div className="absolute bottom-0 left-0 right-0 p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                      <h3 className="text-2xl font-black text-white mb-2">
+                        {founder.name}
+                      </h3>
+                      <p className="text-cyan-100 font-bold text-sm uppercase tracking-wider">
+                        {founder.role}
+                      </p>
                     </div>
-                </section>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-                <Footer />
-            </main>
-        </div>
-    );
-}
-
-// Icon component needed for the section above
-function CheckSquareIcon(props: React.SVGProps<SVGSVGElement>) {
-    return (
-        <svg
-            {...props}
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-        >
-            <polyline points="9 11 12 14 22 4" />
-            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-        </svg>
-    )
+        <Footer />
+      </main>
+    </div>
+  );
 }

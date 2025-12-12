@@ -11,10 +11,22 @@ import {
   TrendingUp,
   PieChart as PieChartIcon,
   ExternalLink,
-  Search
+  Search,
 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/app/components/ui/card";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
+  Legend,
+} from "recharts";
 import { useAccount } from "wagmi";
 import { useGetStudentCertificates } from "../../../hooks/useStudent";
 
@@ -107,9 +119,7 @@ const StatCard: React.FC<{
     style={{ animationDelay: `${delay}ms` }}
   >
     <div className="flex justify-between items-start mb-4">
-      <div className="p-3 bg-white/20 backdrop-blur-md rounded-xl">
-        {icon}
-      </div>
+      <div className="p-3 bg-white/20 backdrop-blur-md rounded-xl">{icon}</div>
       {subtitle && (
         <span className="bg-white/20 backdrop-blur-md px-2 py-1 rounded-lg text-xs font-medium">
           {subtitle}
@@ -130,29 +140,36 @@ export default function StudentDashboardPage() {
   // Combine and format data for global stats/charts
   const allCredentials = useMemo(() => {
     if (!data) return [];
-    const certs = (data.certificates || []).map((c) => ({ ...c, type: "Certificate" }));
+    const certs = (data.certificates || []).map((c) => ({
+      ...c,
+      type: "Certificate",
+    }));
     const degrees = (data.degrees || []).map((d) => ({ ...d, type: "Degree" }));
     return [...certs, ...degrees];
   }, [data]);
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeTab, setActiveTab] = useState<"all" | "certificate" | "degree">("all");
+  const [activeTab, setActiveTab] = useState<"all" | "certificate" | "degree">(
+    "all"
+  );
 
   // --- DERIVED STATE ---
   const stats = useMemo(() => {
-    if (allCredentials.length === 0) return { total: 0, institutions: 0, latest: "N/A" };
+    if (allCredentials.length === 0)
+      return { total: 0, institutions: 0, latest: "N/A" };
 
     const uniqueInsts = new Set(allCredentials.map((c) => c.institution)).size;
     const sortedCerts = [...allCredentials].sort(
-      (a, b) => new Date(b.mintingDate).getTime() - new Date(a.mintingDate).getTime()
+      (a, b) =>
+        new Date(b.mintingDate).getTime() - new Date(a.mintingDate).getTime()
     );
     const latestDate =
       sortedCerts.length > 0
         ? new Date(sortedCerts[0].mintingDate).toLocaleDateString(undefined, {
-          month: "short",
-          day: "numeric",
-          year: "numeric",
-        })
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })
         : "N/A";
 
     return {
@@ -187,7 +204,10 @@ export default function StudentDashboardPage() {
     if (activeTab === "all") {
       sourceList = allCredentials;
     } else if (activeTab === "certificate") {
-      sourceList = (data.certificates || []).map((c) => ({ ...c, type: "Certificate" }));
+      sourceList = (data.certificates || []).map((c) => ({
+        ...c,
+        type: "Certificate",
+      }));
     } else if (activeTab === "degree") {
       sourceList = (data.degrees || []).map((d) => ({ ...d, type: "Degree" }));
     }
@@ -215,18 +235,19 @@ export default function StudentDashboardPage() {
   }, [data, allCredentials, activeTab, searchTerm]);
 
   return (
-    <div className="min-h-screen bg-gray-50/50 font-sans pb-20">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-cyan-50 font-sans pb-20">
       <Header />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
+      {/* Added mt-20 to push content below the fixed header */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-20">
         {/* Page Header */}
         <div className="mb-12 animate-fade-in-down">
           <h1 className="text-4xl font-bold text-gray-900 font-space tracking-tight">
             Student Dashboard
           </h1>
           <p className="text-lg text-gray-500 mt-2 max-w-2xl">
-            Track your academic achievements, manage your digital credentials, and showcase your verified success on the blockchain.
+            Track your academic achievements, manage your digital credentials,
+            and showcase your verified success on the blockchain.
           </p>
         </div>
 
@@ -238,7 +259,9 @@ export default function StudentDashboardPage() {
             icon={<Award className="h-6 w-6 text-white" />}
             gradient="bg-gradient-to-br from-blue-500 to-blue-700"
             delay={0}
-            subtitle={stats.total > 0 ? "Growing Portfolio" : "Start Collecting"}
+            subtitle={
+              stats.total > 0 ? "Growing Portfolio" : "Start Collecting"
+            }
           />
           <StatCard
             title="Issuing Institutions"
@@ -257,10 +280,11 @@ export default function StudentDashboardPage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
           {/* Main Content - Certificate List */}
-          <div className="lg:col-span-2 space-y-8 animate-fade-in-up" style={{ animationDelay: '300ms' }}>
-
+          <div
+            className="lg:col-span-2 space-y-8 animate-fade-in-up"
+            style={{ animationDelay: "300ms" }}
+          >
             <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4">
               <h2 className="text-2xl font-bold font-space text-gray-900">
                 My Credentials
@@ -275,9 +299,11 @@ export default function StudentDashboardPage() {
                       onClick={() => setActiveTab(tab)}
                       className={`
                         px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 capitalize
-                        ${activeTab === tab
-                          ? "bg-white text-blue-600 shadow-sm"
-                          : "text-gray-500 hover:text-gray-700 hover:bg-gray-200/50"}
+                        ${
+                          activeTab === tab
+                            ? "bg-white text-blue-600 shadow-sm"
+                            : "text-gray-500 hover:text-gray-700 hover:bg-gray-200/50"
+                        }
                       `}
                     >
                       {tab === "all" ? "All" : tab + "s"}
@@ -303,24 +329,27 @@ export default function StudentDashboardPage() {
               {isLoading ? (
                 // Loading Skeleton
                 [1, 2, 3].map((i) => (
-                  <div key={i} className="h-48 bg-gray-200 rounded-2xl animate-pulse" />
+                  <div
+                    key={i}
+                    className="h-48 bg-gray-200 rounded-2xl animate-pulse"
+                  />
                 ))
               ) : filteredCertificates.length > 0 ? (
                 filteredCertificates.map((cert, index) => (
-                  <CertificateCard
-                    key={cert.id}
-                    {...cert}
-                    index={index}
-                  />
+                  <CertificateCard key={cert.id} {...cert} index={index} />
                 ))
               ) : (
                 <div className="text-center py-16 bg-white rounded-2xl border border-dashed border-gray-200">
                   <div className="bg-blue-50 rounded-full h-20 w-20 flex items-center justify-center mx-auto mb-4">
                     <FileText className="h-10 w-10 text-blue-300" />
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900">No certificates found</h3>
+                  <h3 className="text-lg font-bold text-gray-900">
+                    No certificates found
+                  </h3>
                   <p className="text-gray-500 mt-1">
-                    {searchTerm ? "Try adjusting your search terms." : "You haven't earned any certificates yet."}
+                    {searchTerm
+                      ? "Try adjusting your search terms."
+                      : "You haven't earned any certificates yet."}
                   </p>
                 </div>
               )}
@@ -328,7 +357,10 @@ export default function StudentDashboardPage() {
           </div>
 
           {/* Sidebar - Charts */}
-          <div className="space-y-8 animate-fade-in-up" style={{ animationDelay: '400ms' }}>
+          <div
+            className="space-y-8 animate-fade-in-up"
+            style={{ animationDelay: "400ms" }}
+          >
             <Card className="border-0 shadow-lg bg-white overflow-hidden">
               <CardHeader className="border-b border-gray-50 pb-4">
                 <CardTitle className="text-lg font-bold text-gray-800 flex items-center font-space">
@@ -356,9 +388,17 @@ export default function StudentDashboardPage() {
                           ))}
                         </Pie>
                         <Tooltip
-                          contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)' }}
+                          contentStyle={{
+                            borderRadius: "12px",
+                            border: "none",
+                            boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
+                          }}
                         />
-                        <Legend verticalAlign="bottom" height={36} iconType="circle" />
+                        <Legend
+                          verticalAlign="bottom"
+                          height={36}
+                          iconType="circle"
+                        />
                       </PieChart>
                     </ResponsiveContainer>
                   </div>
@@ -373,9 +413,12 @@ export default function StudentDashboardPage() {
             {/* Promo / Info Card (Static for now, but fits the theme) */}
             <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 text-white shadow-lg overflow-hidden relative">
               <div className="relative z-10">
-                <h3 className="text-lg font-bold font-space mb-2">Blockchain Verified</h3>
+                <h3 className="text-lg font-bold font-space mb-2">
+                  Blockchain Verified
+                </h3>
                 <p className="text-gray-300 text-sm mb-4">
-                  Your certificates are secured on the blockchain, ensuring they are tamper-proof and verifiable instantly.
+                  Your certificates are secured on the blockchain, ensuring they
+                  are tamper-proof and verifiable instantly.
                 </p>
                 <button className="text-xs font-bold text-blue-300 hover:text-white transition-colors uppercase tracking-wider">
                   Learn more →
