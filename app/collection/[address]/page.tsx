@@ -269,8 +269,8 @@ export default function CollectionDetailPage() {
                   Start minting certificates to see them listed here.
                 </p>
                 <Link
-                  href={`/institute/create/collection/${address}`}
-                  className="mt-6 inline-block"
+                  href={`/collection/create/${address}`}
+                  className="mt-6 inline-block text-black"
                 >
                   <Button variant="outline">Mint Your First Certificate</Button>
                 </Link>

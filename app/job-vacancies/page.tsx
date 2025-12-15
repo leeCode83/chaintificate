@@ -36,11 +36,10 @@ const FilterSection = ({
           className="flex items-center space-x-3 cursor-pointer group"
         >
           <div
-            className={`relative w-5 h-5 border-2 rounded-lg flex items-center justify-center group-hover:border-blue-500 transition-all duration-300 ${
-              selectedOption === option
+            className={`relative w-5 h-5 border-2 rounded-lg flex items-center justify-center group-hover:border-blue-500 transition-all duration-300 ${selectedOption === option
                 ? "bg-gradient-to-r from-blue-600 to-cyan-600 border-blue-600 shadow-lg shadow-blue-500/30"
                 : "border-gray-300 bg-white"
-            }`}
+              }`}
             onClick={() => onSelect(option === selectedOption ? "" : option)}
           >
             {selectedOption === option && (
@@ -89,7 +88,7 @@ export default function JobMarketPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-cyan-50 font-sans pb-20">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-cyan-50 font-sans pb-20 pt-24">
       <Header />
 
       {/* Search Bar Section */}

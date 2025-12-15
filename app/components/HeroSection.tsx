@@ -1,11 +1,42 @@
 // components/HeroSection.tsx
-import React, { useState } from "react";
+"use client";
+
+import React, { useState, useEffect, useMemo } from "react";
 import { Link2, ArrowUpRight, Sparkles, Zap } from "lucide-react";
 import { useVerify } from "@/hooks/useCertificate";
+
+// Seeded random number generator for consistent values
+function seededRandom(seed: number) {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
+
+interface Particle {
+  left: string;
+  top: string;
+  duration: string;
+  delay: string;
+}
 
 const HeroSection: React.FC = () => {
   const [tokenUri, setTokenUri] = useState("");
   const { verifyCertificate, isLoading } = useVerify();
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Generate particles only on client-side to avoid hydration mismatch
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Generate consistent particle positions using a seeded approach
+  const particles = useMemo<Particle[]>(() => {
+    return [...Array(30)].map((_, i) => ({
+      left: `${seededRandom(i * 1.1) * 100}%`,
+      top: `${seededRandom(i * 2.2) * 100}%`,
+      duration: `${5 + seededRandom(i * 3.3) * 15}s`,
+      delay: `${seededRandom(i * 4.4) * 5}s`,
+    }));
+  }, []);
 
   const handleVerify = async () => {
     if (!tokenUri) return;
@@ -37,19 +68,17 @@ const HeroSection: React.FC = () => {
         {/* Advanced grid pattern with perspective */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.08)_2px,transparent_2px),linear-gradient(90deg,rgba(59,130,246,0.08)_2px,transparent_2px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black_40%,transparent)] opacity-40"></div>
 
-        {/* Floating particles */}
+        {/* Floating particles - only render on client to avoid hydration mismatch */}
         <div className="absolute inset-0">
-          {[...Array(30)].map((_, i) => (
+          {isMounted && particles.map((particle, i) => (
             <div
               key={i}
               className="absolute w-1 h-1 bg-blue-500 rounded-full opacity-30"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animation: `float ${
-                  5 + Math.random() * 15
-                }s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 5}s`,
+                left: particle.left,
+                top: particle.top,
+                animation: `float ${particle.duration} ease-in-out infinite`,
+                animationDelay: particle.delay,
               }}
             />
           ))}
@@ -89,8 +118,6 @@ const HeroSection: React.FC = () => {
             </span>
             <span className="relative inline-block my-4">
               {/* Multiple gradient layers */}
-              <span className="absolute -inset-3 bg-gradient-to-r from-blue-400 via-cyan-500 to-blue-600 blur-3xl opacity-50 animate-pulse"></span>
-              <span className="absolute -inset-2 bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-700 blur-2xl opacity-60"></span>
               <span className="relative bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 bg-clip-text text-transparent">
                 Verifiable
               </span>
@@ -260,19 +287,6 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0px) translateX(0px);
-            opacity: 0.4;
-          }
-          50% {
-            transform: translateY(-30px) translateX(20px);
-            opacity: 0.8;
-          }
-        }
-      `}</style>
     </section>
   );
 };

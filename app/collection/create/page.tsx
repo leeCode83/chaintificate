@@ -129,7 +129,7 @@ export default function CreateCollectionPage() {
                 </label>
                 <Input
                   placeholder="e.g. University of Technology 2024 Graduates"
-                  className="bg-white border-gray-200 focus:border-blue-500 h-12"
+                  className="bg-white border-gray-200 focus:border-blue-500 h-12 "
                   value={collectionName}
                   onChange={(e) => setCollectionName(e.target.value)}
                   disabled={isLoading}
@@ -145,7 +145,7 @@ export default function CreateCollectionPage() {
                 </label>
                 <Input
                   placeholder="e.g. UOT24"
-                  className="bg-white border-gray-200 focus:border-blue-500 h-12 uppercase"
+                  className="bg-white border-gray-200 focus:border-blue-500 h-12 uppercase text-black"
                   maxLength={5}
                   value={collectionSymbol}
                   onChange={(e) => setCollectionSymbol(e.target.value)}
@@ -161,7 +161,7 @@ export default function CreateCollectionPage() {
                   Description
                 </label>
                 <textarea
-                  className="flex min-h-[120px] w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="flex min-h-[120px] w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm text-black ring-offset-white placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   placeholder="Describe the purpose of this certificate collection..."
                   value={collectionDescription}
                   onChange={(e) => setCollectionDescription(e.target.value)}
@@ -175,18 +175,16 @@ export default function CreateCollectionPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div
                     onClick={() => setCollectionType("Certificate")}
-                    className={`cursor-pointer rounded-lg border p-4 flex items-center justify-center gap-2 transition-all ${
-                      collectionType === "Certificate"
+                    className={`cursor-pointer rounded-lg border p-4 flex items-center justify-center gap-2 transition-all ${collectionType === "Certificate"
                         ? "border-blue-500 bg-blue-50 text-blue-700 ring-2 ring-blue-500 ring-offset-2"
                         : "border-gray-200 hover:border-gray-300 bg-white text-gray-700"
-                    }`}
+                      }`}
                   >
                     <div
-                      className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-                        collectionType === "Certificate"
+                      className={`w-4 h-4 rounded-full border flex items-center justify-center ${collectionType === "Certificate"
                           ? "border-blue-500"
                           : "border-gray-400"
-                      }`}
+                        }`}
                     >
                       {collectionType === "Certificate" && (
                         <div className="w-2 h-2 rounded-full bg-blue-500" />
@@ -197,18 +195,16 @@ export default function CreateCollectionPage() {
 
                   <div
                     onClick={() => setCollectionType("Degree")}
-                    className={`cursor-pointer rounded-lg border p-4 flex items-center justify-center gap-2 transition-all ${
-                      collectionType === "Degree"
+                    className={`cursor-pointer rounded-lg border p-4 flex items-center justify-center gap-2 transition-all ${collectionType === "Degree"
                         ? "border-blue-500 bg-blue-50 text-blue-700 ring-2 ring-blue-500 ring-offset-2"
                         : "border-gray-200 hover:border-gray-300 bg-white text-gray-700"
-                    }`}
+                      }`}
                   >
                     <div
-                      className={`w-4 h-4 rounded-full border flex items-center justify-center ${
-                        collectionType === "Degree"
+                      className={`w-4 h-4 rounded-full border flex items-center justify-center ${collectionType === "Degree"
                           ? "border-blue-500"
                           : "border-gray-400"
-                      }`}
+                        }`}
                     >
                       {collectionType === "Degree" && (
                         <div className="w-2 h-2 rounded-full bg-blue-500" />
@@ -235,8 +231,8 @@ export default function CreateCollectionPage() {
                     {isWritePending
                       ? "Check Wallet..."
                       : isConfirming
-                      ? "Confirming..."
-                      : "Syncing..."}
+                        ? "Confirming..."
+                        : "Syncing..."}
                   </>
                 ) : (
                   "Create Collection"

@@ -313,7 +313,7 @@ export default function MintCertificatePage() {
                 </label>
                 <Input
                   placeholder="e.g. John Doe"
-                  className="bg-white border-gray-200 focus:border-blue-500 h-12"
+                  className="bg-white border-gray-200 focus:border-blue-500 h-12 text-black"
                   value={recipientName}
                   onChange={(e) => setRecipientName(e.target.value)}
                 />
@@ -325,19 +325,19 @@ export default function MintCertificatePage() {
                 </label>
                 <Input
                   placeholder="e.g. 0x123..."
-                  className="bg-white border-gray-200 focus:border-blue-500 h-12"
+                  className="bg-white border-gray-200 focus:border-blue-500 h-12 text-black"
                   value={recipientWallet}
                   onChange={(e) => setRecipientWallet(e.target.value)}
                 />
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-sm font-medium text-gray-700 text-black">
                   Tanggal Pengesahan
                 </label>
                 <Input
                   type="date"
-                  className="bg-white border-gray-200 focus:border-blue-500 h-12"
+                  className="bg-white border-gray-200 focus:border-blue-500 h-12 text-black"
                   value={issuanceDate}
                   onChange={(e) => setIssuanceDate(e.target.value)}
                 />
