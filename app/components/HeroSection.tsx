@@ -57,11 +57,11 @@ const HeroSection: React.FC = () => {
         {/* Multiple layered orbs */}
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-400/20 rounded-full blur-[120px] animate-pulse"></div>
         <div
-          className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-cyan-400/20 rounded-full blur-[100px] animate-pulse"
+          className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-cyan-400/20 rounded-full blur-[20px] animate-pulse"
           style={{ animationDelay: "1.5s" }}
         ></div>
         <div
-          className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-blue-300/15 rounded-full blur-[90px] animate-pulse"
+          className="absolute top-1/2 left-1/2 w-[400px] h-[400px] bg-blue-300/15 rounded-full blur-[20px] animate-pulse"
           style={{ animationDelay: "3s" }}
         ></div>
 
@@ -113,7 +113,7 @@ const HeroSection: React.FC = () => {
         {/* Futuristic Headline */}
         <div className="text-center mb-20">
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-8 leading-[0.85] tracking-tighter">
-            <span className="block text-gray-900 drop-shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+            <span className="block text-gray-900">
               Secure &
             </span>
             <span className="relative inline-block my-4">
@@ -124,7 +124,7 @@ const HeroSection: React.FC = () => {
               {/* Underline effect */}
               <div className="absolute -bottom-4 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
             </span>
-            <span className="block text-gray-900 drop-shadow-[0_0_30px_rgba(59,130,246,0.3)]">
+            <span className="block text-gray-900">
               Credentials
             </span>
           </h1>
@@ -248,12 +248,7 @@ const HeroSection: React.FC = () => {
           ].map((stat, i) => (
             <div key={i} className="relative group">
               {/* Card glow - multiple layers */}
-              <div
-                className={`absolute -inset-1 bg-gradient-to-r ${stat.color} rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500`}
-              ></div>
-              <div
-                className={`absolute -inset-0.5 bg-gradient-to-r ${stat.color} rounded-3xl blur opacity-40 group-hover:opacity-70 transition-opacity duration-500`}
-              ></div>
+
 
               <div className="relative text-center p-10 bg-white/90 backdrop-blur-2xl rounded-3xl border-2 border-blue-400/40 hover:border-blue-500/60 transition-all duration-500 transform hover:-translate-y-2 shadow-2xl">
                 {/* Icon */}
@@ -263,9 +258,7 @@ const HeroSection: React.FC = () => {
 
                 {/* Value with glow */}
                 <div className="relative mb-3">
-                  <div
-                    className={`absolute inset-0 blur-2xl bg-gradient-to-r ${stat.color} opacity-40`}
-                  ></div>
+
                   <div
                     className={`text-6xl font-black bg-gradient-to-r ${stat.color} bg-clip-text text-transparent relative z-10`}
                   >

@@ -38,31 +38,31 @@ const features = [
 
 const founders = [
   {
-    name: "Alex Rivera",
-    role: "CEO & Co-Founder",
+    name: "Leandro",
+    role: "Smart Contract Developer",
     image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400&h=400",
+      "https://i.pinimg.com/736x/98/e3/40/98e340a4c538cd056cd93aa4c30115e5.jpg",
     gradient: "from-blue-600 to-cyan-600",
   },
   {
-    name: "Sarah Chen",
-    role: "CTO & Co-Founder",
+    name: "Fazle",
+    role: "UI/UX Designer",
     image:
-      "https://images.unsplash.com/photo-1573496359-136d47558363?auto=format&fit=crop&q=80&w=400&h=400",
+      "https://i.pinimg.com/736x/33/4c/9d/334c9dea6110753f06842e99927c8012.jpg",
     gradient: "from-cyan-600 to-blue-700",
   },
   {
-    name: "Marcus Johnson",
-    role: "Head of Blockchain",
+    name: "Leonardo",
+    role: "Frontend Developer",
     image:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400&h=400",
+      "https://i.pinimg.com/736x/7d/f0/04/7df004f9885b3f12e7c20cd715a71763.jpg",
     gradient: "from-blue-700 to-cyan-700",
   },
   {
-    name: "Emily Davis",
-    role: "Head of Design",
+    name: "Stevina",
+    role: "Business Development",
     image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400&h=400",
+      "https://i.pinimg.com/736x/5b/09/28/5b092865c4a872192580603c49756a94.jpg",
     gradient: "from-cyan-700 to-blue-800",
   },
 ];
@@ -300,10 +300,7 @@ export default function AboutUsPage() {
                       alt={founder.name}
                       className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
                     />
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-t ${founder.gradient} opacity-60 group-hover:opacity-80 transition-opacity`}
-                    ></div>
-                    <div className="absolute bottom-0 left-0 right-0 p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-8 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                       <h3 className="text-2xl font-black text-white mb-2">
                         {founder.name}
                       </h3>
