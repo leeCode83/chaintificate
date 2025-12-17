@@ -202,7 +202,7 @@ export default function MintCertificatePage() {
         {/* Breadcrumb / Back Navigation */}
         <div className="mb-8">
           <Link
-            href={`/dashboard/institute/collection/${address}`}
+            href={`collection/${address}`}
             className="text-gray-500 hover:text-gray-900 flex items-center gap-2 transition-colors w-fit"
           >
             <ArrowLeft className="h-4 w-4" /> Back to Collection

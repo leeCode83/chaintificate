@@ -129,7 +129,7 @@ export default function CreateCollectionPage() {
                 </label>
                 <Input
                   placeholder="e.g. University of Technology 2024 Graduates"
-                  className="bg-white border-gray-200 focus:border-blue-500 h-12 "
+                  className="bg-white border-gray-200 focus:border-blue-500 h-12 text-black"
                   value={collectionName}
                   onChange={(e) => setCollectionName(e.target.value)}
                   disabled={isLoading}
